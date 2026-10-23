@@ -1,0 +1,60 @@
+{
+  "name": "@isel-jao/cache-manager",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isel-jao/cache-manager.git"
+  },
+  "license": "MIT",
+  "author": "isel-jao <iseljao89@gmail.com> (https://github.com/isel-jao)",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./redis": {
+      "types": "./dist/adapters/redis-store-adapter.d.ts",
+      "default": "./dist/adapters/redis-store-adapter.js"
+    },
+    "./mongodb": {
+      "types": "./dist/adapters/mongodb-store-adapter.d.ts",
+      "default": "./dist/adapters/mongodb-store-adapter.js"
+    }
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm tsc -p tsconfig.build.json",
+    "test": "vitest run ",
+    "clean": "rm -rf dist node_modules && git clean -fdx",
+    "fclean": "pnpm clean && rm -rf package-lock.json pnpm-lock.yaml"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "ioredis": "^6.0.0",
+    "mongodb": "^7.7.0",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
+  },
+  "peerDependencies": {
+    "ioredis": "^6.0.0",
+    "mongodb": ">=6.0.0 <8.0.0"
+  },
+  "peerDependenciesMeta": {
+    "ioredis": {
+      "optional": true
+    },
+    "mongodb": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
